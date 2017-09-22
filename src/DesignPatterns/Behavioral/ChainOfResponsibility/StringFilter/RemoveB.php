@@ -5,7 +5,7 @@ namespace DesignPatterns\Behavioral\ChainOfResponsibility\StringFilter;
 /**
  * Remove 'a' characters
  */
-class RemoveA extends Handler
+class RemoveB extends Handler
 {
     function __construct($successor = null)
     {
@@ -14,6 +14,6 @@ class RemoveA extends Handler
 
     protected function handleRequest($request)
     {
-        return str_replace('a', '', $request);
+        return str_replace('b', '', $request);
     }
 }

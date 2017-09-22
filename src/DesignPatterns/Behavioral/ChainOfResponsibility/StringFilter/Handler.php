@@ -3,7 +3,8 @@
 namespace DesignPatterns\Behavioral\ChainOfResponsibility\StringFilter;
 
 /**
- *
+ * This example of CoR does not stick to its essence. This is more like a
+ * variation of CoR applied to multiple handlers handling the request.
  */
 abstract class Handler
 {
@@ -18,19 +19,19 @@ abstract class Handler
     }
 
     /**
-     * [handle description]
-     * @param  [type] $request [description]
-     * @return [type]          [description]
+     * @param  string $request
+     * @return string|null
      */
     final public function handle($request)
     {
         $processed = $this->handleRequest($request);
 
-        if ($processed === null)
+        if ($processed <> '')
         {
             if ($this->successor != null)
             {
-                $processed = $this->successor->handle($request);
+                // Here we passed the output of handleRequest instead of the original request
+                $processed = $this->successor->handle($processed);
             }
         }
 
